@@ -76,8 +76,12 @@ export class ResultItem extends Component {
         }
     };
 
+    iconClicked: Function = () => {
+        console.log("iconClicked");
+    };
+    
     render() {
-        const { label, extraInfo } = this.props;
+        const { label, extraInfo, onIconClick } = this.props;
         const { resultClean, statusGlyph } = this.state;
 
         const hasChildren = !!this.props.children;
@@ -94,13 +98,13 @@ export class ResultItem extends Component {
 
         return (
             <div className={outerClassName}>
-                <div className="result-item-head" onClick={this.toggleExpanded}>
-                    <span className={iconClassName}>
+                <div className="result-item-head">
+                    <span className={iconClassName} onClick={onIconClick}>
                         <svg width="28" height="34">
                             <g transform="translate(14 18)" className="result-status-glyph">{statusGlyph}</g>
                         </svg>
                     </span>
-                    <span className="result-item-title">
+                    <span className="result-item-title" onClick={this.toggleExpanded}>
                         <Expando expanded={expanded} disabled={!hasChildren}/>
                         <span className="result-item-label">{label}</span>
                         <span className="result-item-extra-info">
@@ -128,6 +132,7 @@ ResultItem.propTypes = {
     data: PropTypes.any, // Whatever you want, will be sent back to listeners
     onExpand: PropTypes.func, // f(data:*, originalEvent:?event)
     onCollapse: PropTypes.func, // f(data:*, originalEvent:?event)
+    onIconClick: PropTypes.func,
     children: PropTypes.node,
 };
 

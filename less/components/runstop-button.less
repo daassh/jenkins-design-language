@@ -1,0 +1,56 @@
+.runstop-button-component {
+
+    display: inline-block;
+
+    .runstop-button {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    // default (text) display
+    .svg-icon {
+        display: none;
+    }
+
+    // icon display
+    &.icon-button {
+        height: 24px;
+
+        .runstop-button {
+            width: 24px;
+            height: 24px;
+            background: transparent;
+            border: 0;
+            position: relative;
+
+            .svg-icon {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        .button-label {
+            display: none;
+        }
+    }
+
+
+    // dark themeing
+    &.dark {
+        .btn {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .svg-icon {
+            fill: white;
+
+            &:hover {
+                fill: #CCC;
+            }
+        }
+    }
+}
